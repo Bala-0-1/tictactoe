@@ -1,0 +1,36 @@
+package com.example.tictactoe
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import com.example.tictactoe.databinding.FragmentSingleMultiplayerChooseScreenBinding
+
+class SingleMultiplayerChooseScreen : Fragment() {
+
+    lateinit var binding: FragmentSingleMultiplayerChooseScreenBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_single_multiplayer_choose_screen,container,false)
+
+        val vsHumanButton = binding.vsHuman
+        val vsAibutton = binding.vsAi
+
+        vsHumanButton.setOnClickListener { view: View->
+            view.findNavController().navigate(R.id.action_singleMultiplayerChooseScreen2_to_vsHumanScreen)
+        }
+
+        vsAibutton.setOnClickListener { view: View->
+            view.findNavController().navigate(R.id.action_singleMultiplayerChooseScreen2_to_vsAiScreen)
+        }
+        return binding.root
+    }
+}

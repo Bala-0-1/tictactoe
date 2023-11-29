@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeScreenFragment">
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.example.tictactoe.HomeScreenFragment"
+        android:label="HomeScreenFragment" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_singleMultiplayerChooseScreen2"
+            app:destination="@id/singleMultiplayerChooseScreen2" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleMultiplayerChooseScreen2"
+        android:name="com.example.tictactoe.SingleMultiplayerChooseScreen"
+        android:label="SingleMultiplayerChooseScreen" >
+        <action
+            android:id="@+id/action_singleMultiplayerChooseScreen2_to_vsAiScreen"
+            app:destination="@id/vsAiScreen" />
+        <action
+            android:id="@+id/action_singleMultiplayerChooseScreen2_to_vsHumanScreen"
+            app:destination="@id/vsHumanScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/vsAiScreen"
+        android:name="com.example.tictactoe.VsAiScreen"
+        android:label="VsAiScreen" >
+
+        <action
+            android:id="@+id/action_vsAiScreen_to_aiGame"
+            app:destination="@id/aiGame" />
+    </fragment>
+    <fragment
+        android:id="@+id/vsHumanScreen"
+        android:name="com.example.tictactoe.VsHumanScreen"
+        android:label="VsHumanScreen" >
+        <action
+            android:id="@+id/action_vsHumanScreen_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.tictactoe.GameFragment"
+        android:label="GameFragment" >
+        <argument
+            android:name="player1"
+            app:argType="string" />
+        <argument
+            android:name="player2"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_gameFragment_to_winLoseFragment"
+            app:destination="@id/winLoseFragment"
+            app:popUpTo="@id/homeScreenFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/aiGame"
+        android:name="com.example.tictactoe.AiGame"
+        android:label="AiGame" >
+        <action
+            android:id="@+id/action_aiGame_to_winLoseFragment"
+            app:destination="@id/winLoseFragment"
+            app:popUpTo="@id/homeScreenFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="com.example.tictactoe.database.LeaderBoard"
+        android:label="LeaderboardFragment" />
+    <fragment
+        android:id="@+id/winLoseFragment"
+        android:name="com.example.tictactoe.WinLoseFragment"
+        android:label="WinLoseFragment" >
+        <action
+            android:id="@+id/action_winLoseFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment" />
+        <argument
+            android:name="winner"
+            app:argType="string" />
+    </fragment>
+</navigation>
